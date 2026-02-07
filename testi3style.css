@@ -1,0 +1,133 @@
+/* --- YLEISET --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.main-wrapper {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.year {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+/* Oletusarvot näkyvyydelle */
+.mobile-only { display: none !important; }
+.desktop-only { display: block !important; }
+
+/* --- TIETOKONENÄKYMÄ (Yli 768px) --- */
+@media (min-width: 769px) {
+    .top-section {
+        display: flex;
+        gap: 50px;
+        align-items: flex-start;
+        margin-bottom: 50px;
+    }
+
+    .big-image {
+        width: 600px;
+        height: 600px;
+        object-fit: cover;
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .sidebar h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        padding-top: 200px;
+        padding-left: 50px;
+    }
+
+    .eye-image {
+        width: 400px;
+        height: auto;
+        padding-top: 45px;
+    }
+
+    .bottom-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .bottom-grid img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 1 / 1.414; /* A4 pysty */
+    }
+}
+
+/* --- MOBIILINÄKYMÄ (768px tai alle) --- */
+@media (max-width: 768px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+
+    .top-section {
+        display: flex;
+        flex-direction: column; /* Pakottaa sisällön allekkain */
+    }
+
+    .sidebar {
+        order: -1; /* Nostaa koko sidebarin (otsikon) ylimmäksi */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar h1 {
+        text-align: center;
+        margin: 20px 0 25px 0;
+        padding: 0; /* Poistetaan tietokoneen paddingit */
+        font-size: 2rem;
+    }
+
+    .big-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1; 
+        object-fit: cover;
+    }
+
+    .bottom-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 30px;
+        align-items: center; /* Keskittää matalamman silmän Harryn viereen */
+    }
+
+    .grid-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    /* Pystykuvat: Harry, Louis, Dylan (A4-pysty) */
+    .grid-item:not(.mobile-only) img {
+        aspect-ratio: 1 / 1.414; 
+    }
+
+    /* Vaakakuva: Silmä (A4-vaaka) */
+    .grid-item.mobile-only img {
+        aspect-ratio: 1.414 / 1;
+    }
+}
